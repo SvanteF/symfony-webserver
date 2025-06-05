@@ -1,0 +1,27 @@
+{% extends 'adventure/generic.html.twig' %}
+
+{% block title %}Laundry Master{% endblock %}
+
+{% block body %}
+  
+{% include 'adventure/navbar.html.twig' %}
+
+{% include 'flash.html.twig' %}
+
+
+<form action="{{ path('adventure_play') }}" method="post">
+    <label for="name">Ange ditt namn:</label>
+    <input name="name" value="{{ previousName }}" maxlength="20">
+    <button type="submit">Börja spela</button>
+</form>
+
+<p>
+    Jasså, där är du ja. Tror du att du har vad som krävs för att bli en Laundry master? 
+    Du kan ju skriva in ditt namn och ge det ett försök. 
+</p>
+<p>
+    Du ska samla familjens smutstvätt och starta
+    tvättmaskinen. Men vänta! Tror du att det är så enkelt? Vissa plagg har gömt sig här och var.
+    Det är bara till att börja leta... Klarar du det tror du..?
+</p>
+{% endblock %}

@@ -1,0 +1,333 @@
+body {
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #fafafa;
+  font-family: "Kanit", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Babas Neue", sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+.no-bullets {
+  list-style-type: none;
+}
+
+header {
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: #aaa;
+  padding: 20px 0;
+}
+header nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+header nav ul li {
+  margin-right: 10px;
+}
+header nav ul li a {
+  text-decoration: underline;
+  color: #333;
+  font-size: 1.6em;
+  padding: 10px;
+}
+header nav ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+.two-columns-index {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+}
+.two-columns-index .left, .two-columns-index .right {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 2px;
+}
+.two-columns-index .left .profile {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.two-columns-about {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+}
+.two-columns-about .left {
+  padding: 2px;
+}
+.two-columns-about .left .links {
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.two-columns-about .right {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.mvc {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.two-columns-report {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 20px;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+}
+.two-columns-report .left, .two-columns-report .right {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 2px;
+}
+.two-columns-report .right p {
+  text-align: left;
+}
+.two-columns-report .right .reply {
+  font-weight: bold;
+}
+.two-columns-report .right .ul-left {
+  text-align: left;
+}
+
+.lucky {
+  background-color: #f7931a;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.api {
+  max-width: 100%;
+  background-color: #ddd;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.code {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+footer {
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 20px 0;
+  margin-top: auto;
+  background-color: #aaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+footer .link-course, footer .link-mine {
+  font-size: 1.2em;
+  padding: 10px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.adventure_body {
+  background-color: #222;
+  color: #ff1744;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.adventure_main .glow-yellow {
+  color: #ffe066;
+  text-shadow: 0 0 8px #baff39, 0 0 2px #ff1744;
+  font-family: "VT323", monospace;
+  font-size: 1.3em;
+}
+.adventure_main .glow-red {
+  color: #ff1744;
+  text-shadow: 0 0 8px #ff9100, 0 0 16px #fff176;
+  font-family: "VT323", monospace;
+  font-size: 1.5em;
+}
+.adventure_main a {
+  color: #baff39;
+  text-decoration: underline;
+}
+.adventure_main a:hover {
+  color: #eaff90;
+  text-decoration: none;
+}
+.adventure_main .flash-success {
+  color: #82ff39;
+  font-size: 1.5em;
+}
+.adventure_main .flash-warning {
+  color: #ffe785;
+  font-size: 1.5em;
+}
+
+.adventure_header {
+  background-color: #222;
+  font-size: 0.5em;
+  padding: 2px 0;
+  border: 3px solid #ff1744;
+  border-radius: 5px;
+}
+.adventure_header nav a {
+  text-decoration: underline;
+  color: #ffe066;
+  font-size: 1.6em;
+  padding: 0px;
+}
+.adventure_header nav a:hover {
+  background-color: rgba(255, 23, 68, 0.5);
+  border-radius: 1px;
+}
+
+.two-columns-adventure {
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  gap: 5px;
+  margin: 3px;
+}
+.two-columns-adventure .left, .two-columns-adventure .center, .two-columns-adventure .right {
+  border: 3px solid #ff1744;
+  border-radius: 5px;
+  padding: 5px;
+}
+.two-columns-adventure form {
+  font-size: 0.2em;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.adventure-footer {
+  background-color: #222;
+  padding: 2px 0;
+  border: 3px solid #ff1744;
+  border-radius: 5px;
+  padding: 20px 0;
+}
+.adventure-footer .link-course, .adventure-footer .link-mine {
+  color: #ffe066;
+  font-size: 1.2em;
+  padding: 10px;
+}
+.adventure-footer .link-course:hover, .adventure-footer .link-mine:hover {
+  background-color: rgba(255, 23, 68, 0.5);
+  border-radius: 1px;
+}
+
+.highscore-table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+.highscore-table th, .highscore-table td {
+  padding: 0.5em;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  p {
+    font-size: 1.5em;
+    margin: 10px;
+    padding: 5px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  form input,
+  form button,
+  form label {
+    font-size: 1.5em;
+    max-width: 50%;
+    text-align: center;
+    margin: 5px;
+  }
+  .two-columns-adventure,
+  .two-columns-report {
+    grid-template-columns: 1fr;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+  .two-columns-adventure .left,
+  .two-columns-adventure .center,
+  .two-columns-adventure .right,
+  .two-columns-report .left,
+  .two-columns-report .right {
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    margin-bottom: 10px;
+  }
+  img, pre, code {
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+  }
+  .api {
+    max-width: 100vw;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+  .api form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .api input,
+  .api button {
+    display: block;
+    width: 100%;
+    max-width: 100vw;
+    margin: 10px 0;
+    box-sizing: border-box;
+    font-size: 1em;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  .adventure_main,
+  header,
+  footer {
+    padding: 0 10px;
+  }
+}
+
+/*# sourceMappingURL=app.css.map */

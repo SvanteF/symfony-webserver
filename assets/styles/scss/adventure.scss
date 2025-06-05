@@ -1,0 +1,121 @@
+.adventure_body {
+   background-color: #222;
+   color:#ff1744;    
+   font-family: 'IBM Plex Mono', monospace;
+
+}
+
+.adventure_main {
+     .glow-yellow {
+        color: #ffe066;
+        text-shadow: 0 0 8px #baff39, 0 0 2px #ff1744;
+        font-family: 'VT323', monospace;
+        font-size: 1.3em;
+    }
+
+    .glow-red {
+        color: #ff1744;
+        text-shadow: 0 0 8px #ff9100,0 0 16px #fff176;  
+        font-family: 'VT323', monospace;
+        font-size: 1.5em;
+    }
+
+    a {
+        color: #baff39;
+        text-decoration: underline;
+
+        &:hover {
+            color: #eaff90; // Ännu ljusare vid hover
+            text-decoration: none;
+        }
+    }
+
+    .flash-success { 
+        color: #82ff39; 
+        font-size: 1.5em;
+    }
+
+    .flash-warning { 
+        color: #ffe785; 
+        font-size: 1.5em;
+    }
+}
+
+.adventure_header {
+    background-color: #222;
+    font-size: 0.5em;
+    padding: 2px 0;
+
+    border: 3px solid #ff1744;
+    border-radius: 5px;
+
+    nav {
+
+        a {
+            text-decoration:underline;
+            color: #ffe066;
+            font-size: 1.6em;
+            padding: 0px;
+    
+            &:hover {
+            background-color: rgba(255, 23, 68, 0.5); 
+            border-radius: 1px;
+            }
+        }
+    }
+}
+
+.two-columns-adventure {
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr;
+    gap: 5px;
+    margin: 3px;
+
+    .left, .center, .right {
+        border: 3px solid #ff1744;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+     form {
+        font-size: 0.2em;
+    }
+}
+
+.text-left {
+    text-align: left;
+}
+
+.adventure-footer {
+
+    background-color: #222;
+    padding: 2px 0;
+
+    border: 3px solid #ff1744;
+    border-radius: 5px;
+    padding: 20px 0;
+
+    .link-course, .link-mine {
+        color: #ffe066;
+        font-size: 1.2em;
+        padding: 10px;
+        
+        &:hover {
+            background-color: rgba(255, 23, 68, 0.5); 
+            border-radius: 1px;
+        }
+    }
+
+}
+
+.highscore-table {
+    border-collapse: collapse;
+    margin: 0 auto;
+
+    th, td {
+        padding: 0.5em;
+        text-align: center;
+    }
+}
+
+

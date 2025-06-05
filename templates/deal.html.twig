@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card Game - Deal{% endblock %}
+
+{% block body %}
+    <h1>Card Game</h1>
+
+    <h2>Givar:</h2>
+    {% for player in players %}
+        <h2>
+            {{ player.getName() }}: 
+            {% for card in player.getCardHand() %}
+                {{ card.getAsString() }}
+            {% endfor %}
+        </h2>
+    {% endfor %}
+
+    <h2>
+        ...........................
+    </h2>
+
+    <h2>
+        Antal kort kvar:
+        {{ cardsLeft }}
+    </h2>
+
+    <h2>
+        ...........................
+    </h2>
+
+    <h2>Dela ut kort</h2>
+    <form action="{{ path('deal_post') }}" method="post">
+        <label for="numPlayers">Antal spelare:</label>
+        <input type="number" id="numPlayers" name="numPlayers" value="1" min="1" max="52" />
+        <br>
+        <label for="numCards">Antal kort per spelare:</label>
+        <input type="number" id="numCards" name="numCards" value="1" min="1" max="52" />
+        <br>
+        <button type="submit">Ny giv</button>
+    </form>
+
+{% endblock %}

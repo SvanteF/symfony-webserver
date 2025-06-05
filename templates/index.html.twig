@@ -1,0 +1,25 @@
+{# templates/lucky_number.html.twig #}
+
+{% extends "base.html.twig" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block body %}
+
+    <h1>Välkommen till MVC-kursen</h1>
+
+    <section class="two-columns-index">
+        <article class="left">
+            <img class="profile" src="{{ asset('img/discord.jpg') }}" alt="">
+        </article>
+        <article class="right">
+            <p>
+                Stolt pappa till tre barn. Har många intressen och tycker det är väldigt kul 
+                att programmera. Min profilbild på discord säger en hel del om mig... Jag är numera 
+                hemmapappa, student och Malmöbo och har insett att life hacking är jättekul. 
+                Familjen och all möjlig teknik är roligast just nu. Det kör vi på!
+            </p>
+        </article>
+    </section>
+    
+{% endblock %}

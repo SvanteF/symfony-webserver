@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Session{% endblock %}
+
+{% block body %} 
+    <section class="api">
+        <h2>Aktuellt innehåll i sessionen</h2>
+
+        {{ dump(sessionData) }}
+
+        <a href="{{ path('deleteSession') }}">Radera sessionen</a>
+
+        {{ include('flash.html.twig') }}
+
+    </section>
+    
+
+{% endblock %}

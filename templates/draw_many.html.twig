@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card{% endblock %}
+
+{% block body %}
+<h1>Card game</h1>
+
+<h2>Dragna kort:
+    {% for card in cardHand %}
+        {{ card.getAsString() }}
+    {% endfor %}
+</h2>
+
+<h2>Antal kort kvar: {{ cardsLeft }}</h2>
+
+<form action="{{ path('draw_many_from_deck_post') }}" method="post">
+    <label for="num">Antal kort att dra:</label>
+    <input type="number" id="num" name="num" value="1" min="1" max="52" />
+    <button type="submit">Dra kort</button>
+</form>
+
+{% endblock %}

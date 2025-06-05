@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="{{ asset('img/discord.jpg') }}">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&family=Babas+Neue&display=swap" rel="stylesheet">
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="{{ path('index') }}">ME</a></li>
+                    <li><a href="{{ path('about') }}">ABOUT</a></li>
+                    <li><a href="{{ path('report') }}">REPORT</a></li>
+                    <li><a href="{{ path('lucky') }}">LUCKY</a></li>
+                    <li><a href="{{ path('api') }}">API</a></li>
+                    <li><a href="{{ path('pig_init_get') }}">Pig</a></li>
+                    <li><a href="{{ path('showSession') }}">Session</a></li>
+                    <li><a href="{{ path('card_start') }}">Card</a></li>
+                    <li><a href="{{ path('game_start') }}">21</a></li>
+                    <li><a href="{{ path('app_library') }}">Library</a></li>
+                    <li><a href="{{ path('metrics') }}">Metrics</a></li>
+                    <li><a href="{{ path('adventure_start') }}">Adventure</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>{% block body %}{% endblock %}</main>
+
+        <footer>
+            <a class="link-course" href="https://github.com/dbwebb-se/mvc" target="_blank">
+                <i class="fab fa-github"></i>Kursens Git-repo
+            </a>
+            <a class="link-mine" href="https://github.com/SvanteF/mvc-report" target="_blank">
+                <i class="fab fa-github"></i>Mitt Git-repo
+            </a>
+        </footer>
+    </body>
+</html>

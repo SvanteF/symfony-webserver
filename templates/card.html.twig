@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card{% endblock %}
+
+{% block body %}
+<h1>Card game</h1>
+
+<p><a href="{{ path('card_deck') }}">Skapa och visa kortlek</a></p>
+<p><a href="{{ path('deck_with_jokers') }}">Skapa och visa kortlek med jokrar</a></p>
+<p><a href="{{ path('shuffle_deck') }}">Blanda kortleken</a></p>
+<p><a href="{{ path('draw_from_deck') }}">Dra ett kort från leken</a></p>
+<p><a href="{{ path('draw_many_from_deck_get', {'num': 0}) }}">Dra ett eller flera kort från leken</a></p>
+<p><a href="{{ path('deal_get', {'numPlayers': 0, 'numCards': 0}) }}">Dela ut kort till spelare</a></p>
+
+
+
+{{ include('flash.html.twig') }}
+
+<p>Spelet använder sig av fyra klasser. Card, DeckOfCards, DeckWithJokers och Player. 
+    DeckOfCards är en komposition som innehåller Card-objekt. 
+    DeckWithJokers ärver från DeckOfCards.
+</p>
+
+<img src="{{ asset('img/uml.png') }}" alt="">
+
+
+{% endblock %}

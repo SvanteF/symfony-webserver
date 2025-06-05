@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card{% endblock %}
+
+{% block body %}
+<h1>Card game</h1>
+
+<h2>
+    Draget kort: 
+    {{ drawCard.getAsString() }}
+</h2>
+<h2>
+    Antal kort kvar:
+    {{ cardsLeft }}
+</h2>
+
+<p><a href="{{ path('draw_from_deck')}}">Dra ett kort till</a></p>
+
+{% endblock %}

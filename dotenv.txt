@@ -1,0 +1,34 @@
+
+Dotenv Variables & Files
+========================
+
+Scanned Files (in descending priority)
+--------------------------------------
+
+ * ⨯ .env.local.php
+ * ✓ .env.student.local
+ * ⨯ .env.student
+ * ✓ .env.local
+ * ✓ .env
+
+Variables
+---------
+
+ ------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------ ----------------------------------- ----------------------------------- ----------------------------------- 
+  Variable                  Value                                                                                                                                                        .env.student.local                  .env.local                          .env                               
+ ------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------ ----------------------------------- ----------------------------------- ----------------------------------- 
+  APP_ENV                   student                                                                                                                                                      n/a                                 n/a                                 dev                                
+  APP_SECRET                                                                                                                                                                             n/a                                 n/a                                                                    
+  DATABASE_HOST             blu-ray.student.bth.se                                                                                                                                       blu-ray.student.bth.se              n/a                                 n/a                                
+  DATABASE_NAME             svfa24                                                                                                                                                       svfa24                              n/a                                 n/a                                
+  DATABASE_PASSWORD         hWSDMxxxTjy5                                                                                                                                                 hWSDMxxxTjy5                        n/a                                 n/a                                
+  DATABASE_PORT             3306                                                                                                                                                         3306                                n/a                                 n/a                                
+  DATABASE_URL              mysql://%env(DATABASE_USER)%:%env(DATABASE_PASSWORD)%@%env(DATABASE_HOST)%:%env(DATABASE_PORT)%/%env(DATABASE_NAME)%?serverVersion=%env(DATABASE_VERSION)%   mysql://%env(DATABASE_USER)%:%...   mysql://maria:P%40ssw0rd@LAPTO...   sqlite:///%kernel.project_dir%...  
+  DATABASE_USER             svfa24                                                                                                                                                       svfa24                              n/a                                 n/a                                
+  DATABASE_VERSION          mariadb-10.11.11                                                                                                                                             mariadb-10.11.11                    n/a                                 n/a                                
+  MAILER_DSN                null://null                                                                                                                                                  n/a                                 n/a                                 null://null                        
+  MESSENGER_TRANSPORT_DSN   doctrine://default?auto_setup=0                                                                                                                              n/a                                 n/a                                 doctrine://default?auto_setup=...  
+ ------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------ ----------------------------------- ----------------------------------- ----------------------------------- 
+
+ // Note that values might be different between web and CLI.                                                            
+

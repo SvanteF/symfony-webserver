@@ -1,0 +1,57 @@
+imports:
+    - php
+
+filter:
+    excluded_paths: [
+        vendor/*, 
+        test/*, 
+        src/Dice/*, 
+        src/Card/*, 
+        tests/Card*,
+        tests/Dice*,
+        src/Entity/Library.php, 
+        src/Entity/Product.php,
+        src/Repository/LibraryRepository.php,
+        src/Repository/ProductRepository.php,
+        src/Controller/CardGameController.php,
+        src/Controller/ControllerJson.php,
+        src/Controller/ControllerTwig.php,
+        src/Controller/DiceGameController.php,
+        src/Controller/LibraryController.php,
+        src/Controller/MetricsController.php,
+        src/Controller/ProductController.php,
+        src/Controller/SessionController.php,
+        src/Controller/TwentyOneGameController.php
+    ]
+
+
+build:
+    image: default-bionic
+
+    nodes:
+        my-tests:
+            environment:
+                php:
+                    version: 8.3.3
+                    # version: 8.1.13
+                    # version: 8.1.17
+                    # version: 8.2.4
+                node:
+                    version: 16
+        analysis:
+            tests:
+                override:
+                    - php-scrutinizer-run
+                    #- phpcs-run # Not used, missing config file
+    tests:
+        override:
+            - command: "npm install"
+            - command: "npm run build" 
+
+            - command: "php bin/console doctrine:migrations:migrate --env=test --no-interaction"
+
+            -   command: "composer phpunit"
+                # command: "XDEBUG_MODE=coverage vendor/bin/phpunit"
+                coverage:
+                    file: "docs/coverage.clover"
+                    format: "php-clover"

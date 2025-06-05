@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+
+{% block title %}21{% endblock %}
+
+{% block body %}
+<h1>21</h1>
+
+<p>Bankens saldo: {{ bankFunds }}</p>
+<p>Ditt saldo: {{ playerFunds }}</p>
+<p>
+    {% if bet > 0 %}
+        Du har bettat {{bet}}
+    {% endif %}
+</p>
+
+<h2>
+    {% for card in playersCards %}
+        {{ card }}
+    {% endfor %}
+</h2>
+
+<h2>
+    Dina poäng är: {{ playerPoints }}
+</h2>
+
+
+<h2>
+    .............................................
+</h2>
+
+<h2>
+    {% for card in banksCards %}
+        {{ card }}
+    {% endfor %}
+</h2>
+
+<h2>
+    Bankens poäng är: {{ bankPoints }}
+</h2>
+
+
+<form action="{{ path('game_21_3_post') }}" method="post">
+    <button type="submit">Visa bankens nästa kort</button>
+</form>
+
+{% endblock %}

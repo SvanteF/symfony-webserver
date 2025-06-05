@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}21{% endblock %}
+
+{% block body %}
+<h1>21</h1>
+
+{% if winner == 'player' %}
+    <h2>Grattis, du vann! Banken har slut på pengar</h2>
+
+{% elseif winner == 'bank' %}
+    <h2>Du förlorar, dina pengar är slut</h2>
+
+{% endif %}
+
+
+
+<form action="{{ path('game_21_1_get') }}" method="get">
+    <button type="submit">Starta om från början med nytt saldo</button>
+</form>
+
+{% endblock %}

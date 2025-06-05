@@ -1,0 +1,127 @@
+{% extends 'adventure/generic.html.twig' %}
+
+{% block title %}Laundry Master{% endblock %}
+
+{% block body %}
+  
+{% include 'adventure/navbar.html.twig' %}
+
+{% include 'flash.html.twig' %}
+
+<h3 class="glow-yellow">
+    Återställ databasen (varning: all historik om spelare och highscore tas bort)
+</h3>
+
+<form action="{{ path('proj_reset') }}" method="post">
+    <button type="submit">Återställ databasen</button>
+</form>
+
+    <h1>Info om databasen</h1>
+
+    <section class="two-columns-report">
+        <aside class="left">
+            <h2>Rubriker</h2>
+            <p>
+                <a href="#er-diagram">ER-diagram</a>
+            </p>
+            <p>
+                <a href="#beskrivning">Beskrivning av tabeller</a>
+            </p>
+            <p>
+                <a href="#relationer">Relationer</a>
+            </p>
+            <p>
+                <a href="#databas">Databas</a>
+            </p>
+            <p>
+                <a href="#enhetstester">Enhetstester</a>
+            </p>
+            <p>
+                <a href="#ORM">ORM</a>
+            </p>
+        </aside>
+        <article class="right">
+            <h2 id="er-diagram">ER-diagram</h2>
+            <img src="{{ asset('img/er-diagram.png') }}" alt="ER model">
+
+
+            <h2 id="beskrivning">Beskrivning av tabeller</h2>
+            <p>
+                player_entity: Innehåller ett unikt id samt namn för alla spelare.
+            </p>
+              <p>
+                highscore: Innehåller alla poäng från slutförda spel, vilken spelare som fick dem, ett unikt
+                id samt när varje highscore skapades.
+            </p>
+            <h2 id="relationer">Relationer</h2>
+            <p>
+                Mellan player_entity och highscore är det en "many-to-one"-relation då en spelare
+                kan ha många highscores medan varje highscore tillhör en spelare. Jag löste det i 
+                ORM på följande sätt (enligt doctrine dokumentationen):
+            </p>
+            <pre class="text-left"><code>
+                #[ORM\ManyToOne(targetEntity: PlayerEntity::class)]
+                #[ORM\JoinColumn(nullable: false)]
+                private PlayerEntity $player;
+            </code></pre>
+            
+            <h2 id="databas">Databas</h2>
+            <p>
+                Redan i kursmoment 5 var det min ambition att använda MariaDB och jag fick det att 
+                fungera fint lokalt men inte på databasservern. Trots många timmars arbete och 
+                hjälp från Mikael kom vi inte i mål och det verkar vara ett problem som BTH IT 
+                helpdesk behöver hjälpa till att lösa. Än så länge är det inte löst och därför 
+                använde jag SQLite för projektet.
+            </p>
+            <h2 id="enhetstester">Enhetstester</h2>
+            <p>
+                Jag har implementerat enhetstester mot databasen och har 100% coverage, både lokalt
+                och i Scrutinizer. Testerna lägger till data, hämtar den och tar bort den i filerna
+                AdventureDatabaseControllerTest.php och AdventureGameControllerTest.php. Gällande 
+                Scrutinizer behövde jag inte göra något speciellt för att testerna skulle fungera, 
+                troligtvis för att jag använder SQLite och inte MariaDB.
+            </p>
+            <h2 id="ORM">ORM</h2>
+            <p>
+                Låt oss titta på fördelar, nackdelar, likheter och skillnader mellan ORM och med 
+                tidigare arbetssätt.
+            </p>
+            <h3 class="text-left">
+                Fördelar
+            </h3>
+            <p>
+                Att arbeta med ORM, på den nivån jag gjort hittills, går klart snabbare än att skriva 
+                kod i SQL. I vårt fall arbetar vi i kursen istället med objekt i PHP. Därför kan man spara 
+                en hel del tid jämfört med att arbeta med SQL. En annan mer generell fördel är också att 
+                fler personer i ett team kan arbeta med databasen då det inte kräver några extra 
+                kunskaper om SQL.
+            </p>
+            <p>
+                ORM gör det också möjligt att mer enkelt byta mellan databaser vilket jag tänker
+                kan vara kraftfullt ute i industrin och minska beroenden av enskilda leverantörer.
+            </p>
+            <h3 class="text-left">
+                Nackdelar
+            </h3>
+            <p>
+                En stor nackdel som jag upplever är att jag faktiskt inte riktigt vet vad varje kommando
+                gör. Jag har från våra exempel i kursen och dokumentation hittat kommandon som utför det
+                jag vill, utan att jag vet hur de gör det. Dock har jag en grundförståelse från tidigare
+                databaskurs. En annan nackdel jag förstått finns är att det är svårare att optimera
+                prestanda med ORM jämfört med att arbeta direkt med SQL. Jag har dock inte själv märkt
+                av det i denna kurs.
+            </p>
+             <h3 class="text-left">
+                Likheter och skillnader
+            </h3>
+            <p>
+                Detta var en svårare fråga men jag tänker att en skillnad är att man i ORM arbetar med objekt
+                medan man i SQL arbetar direkt med information i databasen. I slutändan är det dock samma 
+                resultat (förhoppningsvis) man som slutanvändare efterfrågar. Valet av arbetssätt ligger istället på den person
+                eller team som arbetar med koden.
+            </p>
+           
+        </article>
+    </section>
+
+{% endblock %}

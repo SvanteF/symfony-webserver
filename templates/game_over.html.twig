@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+
+{% block title %}21{% endblock %}
+
+{% block body %}
+<h1>21</h1>
+
+{% if winner == 'player' %}
+    <h2>DU VANN</h2>
+{% elseif winner == 'bank' %}
+    <h2>DU FÖRLORADE</h2>
+{% endif %}
+
+<h3>Ditt resultat</h3>
+<p>
+    {% for card in playersCards %}
+        {{ card }}
+    {% endfor %}
+    = {{playerPoints}} poäng
+</p>
+
+<h3>Bankens resultat</h3>
+<p>
+    {% for card in banksCards %}
+        {{ card }}
+    {% endfor %}
+    = {{bankPoints}} poäng
+</p>
+
+
+
+
+<form action="{{ path('game_21_2_get') }}" method="get">
+    <button type="submit">Ny omgång</button>
+</form>
+
+{% endblock %}

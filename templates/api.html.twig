@@ -1,0 +1,80 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card{% endblock %}
+
+{% block body %} 
+
+    <section class="api">
+        <h2>Sammanställning av JSON routes</h2>
+      
+        <p>..........................................................................</p>
+        <p>Hämtar dagens citat</p>
+        <form action="api/quote/" method="GET">
+            <button type="submit">GET api/quote</button>
+        </form>
+        <p>..........................................................................</p>
+
+        <p>Returnerar hela kortleken sorterad per färg och värde.</p>
+        <form action="api/deck/" method="GET">
+            <button type="submit">GET api/deck</button>
+        </form>
+        <p>..........................................................................</p>
+
+        <p>Blandar kortleken och sparar den blandade versionen i sessionen.</p>
+        <form action="api/deck/shuffle" method="POST">
+            <button type="submit">POST api/deck/shuffle</button>
+        </form> 
+        <p>..........................................................................</p>
+
+        <p>
+            Drar 1 kort från kortleken och visar upp det samt antal kort som finns kvar i leken.
+            Kortleken sparas i sessionen.
+        </p>
+        <form action="api/deck/draw" method="POST">
+            <button type="submit">POST api/deck/draw</button>
+        </form> 
+        <p>..........................................................................</p>
+
+        <p>
+            Drar :number kort från kortleken och visar upp dem samt antal kort som finns
+            kvar i leken. Kortleken sparas i sessionen.
+        </p>
+        <form action="api/deck/draw/" method="POST">
+            <input type="number" id="num" name="num" value="1" min="1" max="52" />
+            <button type="submit">POST api/deck/draw/:number</button>
+        </form> 
+        <p>..........................................................................</p>
+
+        <p>
+            Delar ut ett antal :cards från kortleken till ett antal :players och visar upp de korten som respektive spelare har fått. 
+            Antalet kort som är kvar i kortleken visas. Kortleken sparas i sessionen.
+        </p>
+        <form action="api/deck/deal/" method="POST">
+            <input type="number" id="numPlayers" name="numPlayers" value="1" min="1" max="52" />Antal spelare 
+            <input type="number" id="numCards" name="numCards" value="1" min="1" max="52" />Antal kort per spelare
+            <button type="submit">POST api/deck/draw/:players/:cards</button>
+        </form> 
+        <p>..........................................................................</p>
+
+        <p>Visa aktuell ställning för spelet 21</p>
+        <form action="api/game/" method="GET">
+            <button type="submit">GET api/game</button>
+        </form>
+        <p>..........................................................................</p>
+
+        <p>Visa samtliga böcker i biblioteket</p>
+        <form action="api/library/books/" method="GET">
+            <button type="submit">GET api/library/books</button>
+        </form>
+        <p>..........................................................................</p>
+
+        <p>Visa en specifik bok i biblioteket</p>
+        <form action="api/library/books/999-9-99-999999-9" method="GET">
+            <button type="submit">GET api/library/books/&lt;isbn&gt</button>
+        </form>
+        <p>..........................................................................</p>
+
+    </section>
+    
+
+{% endblock %}

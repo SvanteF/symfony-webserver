@@ -1,0 +1,146 @@
+{% extends 'adventure/generic.html.twig' %}
+
+{% block title %}Laundry Master{% endblock %}
+
+{% block body %}
+  
+{% include 'adventure/navbar.html.twig' %}
+
+{% include 'flash.html.twig' %}
+
+    <section class="two-columns-adventure">
+        <article class="left">
+             <p class="text-left">
+                {{ room.getInfo() }}
+            </p>
+
+            {% if room.getName() == 'Grovkök'%}
+            <p class="text-left">
+                Du har {{ player.getLaundryCount() }} smutsiga plagg i tvättkorgen
+        
+                {% if player.getLaundryCount() < 15 %}
+
+                och kan starta tvättmaskinen först när du har 15 plagg. Leta vidare och kom tillbaka!
+
+                {% else %}
+
+                , du har alltså hittat tillräckligt många plagg. Grattis! Du kan starta tvättmaskinen.
+            </p>
+                <form action="{{ path('adventure_game_over') }}" method="post">
+                    <button type="submit">Starta maskinen</button>
+                </form>
+
+                {% endif %}
+            {% endif %}
+
+            <img src="{{ asset(room.getImage()) }}" alt="Room map of {{ room.getName() }}">
+        </article>
+        
+        <aside class="center">
+            <h3 class="glow-yellow">
+                {{ room.getName() }}
+            </h3>
+            <p>
+                {% for where, nextRoom in room.getAvailableDoors() %}
+                <a href="{{ path('adventure_move', {'where': where}) }}">{{ nextRoom.getName() }} ({{ where}})</a>
+                <br>
+                {% endfor %}
+            </p>
+            <h4 class="glow-yellow">
+                Saker i rummet:
+            </h4>
+            
+            {% for thing in room.getThings() %}
+                {% if thing.getType() == 'laundry' %}
+                    Smutstvätt {#id: {{ thing.getId() }}#}
+                {% else %}
+                    Nyckel {#id:{{ thing.getId() }}#}
+                {% endif %}
+                {#{{ thing.getType() }}, id: {{ thing.getId() }}#}
+                <form action="{{ path('adventure_collect', {'thingId': thing.getId()}) }}" style="display:inline;" method="post">
+                    <button type="submit"><i class="fa-solid fa-plus"></i></button>
+                </form>
+                <br>
+            {% else %}
+                    Rummet är tomt
+            {% endfor %}
+
+            {% for closet in room.getClosets() %}
+                <p class="glow-yellow">
+                    Garderob {{ closet.getId() }} 
+                    {% if closet.isLocked() %}
+                        (låst)
+                    {% else %}
+                        (öppen)
+                    {% endif %}
+                </p>
+                {% if closet.isLocked() %}
+                {% if player.getPocket() %}
+                    {% for key in player.getPocket() %}
+                            Nyckel{#, id: {{ key.getId() }}#}
+                            <form action="{{ path('adventure_unlock', {'closetId': closet.getId()}) }}" style="display:inline;" method="post" >
+                                <input type="hidden" name="keyId" value="{{ key.getId() }}">
+                                <button type="submit">Använd</button>
+                            </form>
+                        <br>
+                    {% endfor %}
+                {% else %}
+                <p>
+                    Du har ingen nyckel, fortsätt att leta
+                </p>
+                {% endif %}
+
+                {% else %}
+                <p class="glow-yellow">
+                    Innehåll i garderoben:
+                </p>
+                    {% for thing in closet.getThings() %}
+                        {#{{ thing.getType() }} (id: {{ thing.getId() }})#}
+                          {% if thing.getType() == 'laundry' %}
+                            Smutstvätt {#id: {{ thing.getId() }}#}
+                        {% else %}
+                            Nyckel {#id: {{ thing.getId() }}#}
+                        {% endif %}
+                        <form action="{{ path('adventure_collect', {'thingId': thing.getId(), 'closetId': closet.getId()}) }}" style="display:inline;" method="post">
+                            <button type="submit"><i class="fa-solid fa-plus"></i></button>
+                        </form>
+                        <br>
+                    {% else %}
+                        Garderoben är tom
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </aside>
+
+        <aside class="right">
+            <h3 class="glow-yellow">
+                Spelare: {{ player.getName() }}
+            </h3>
+            <br>
+            <h4 class="glow-yellow">
+                Tvättkorgen
+            </h4>
+            <p>
+                {% if player.getBasket()|length == 0 %}
+                    Tvättkorgen är tom
+                {% else %}
+                    Antal plagg: {{ player.getBasket()|length }}
+                {% endif %}
+            </p>
+            <h4 class="glow-yellow">
+                Fickan
+            </h4>
+            <p>
+                {% for thing in player.getPocket()%}
+                        Nyckel{#, id: {{ thing.getId() }}#}
+                    <br>
+                {% else %}
+                        Fickan är tom
+                {% endfor %}
+            </p>
+        </aside>
+
+    </section>
+
+
+{% endblock %}

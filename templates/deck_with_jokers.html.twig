@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card{% endblock %}
+
+{% block body %}
+<h1>Card game</h1>
+
+<h2>
+    {% for card in allCards %}
+        {{ card.getAsString() }}
+    {% endfor %}
+</h2>
+
+{% endblock %}

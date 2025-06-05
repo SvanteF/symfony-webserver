@@ -1,0 +1,61 @@
+{% extends 'adventure/generic.html.twig' %}
+
+{% block title %}API | Laundry Master{% endblock %}
+
+{% block body %} 
+
+{% include 'adventure/navbar.html.twig' %}
+
+
+    <section class="api">
+        <h2>Sammanställning av JSON routes för projektet</h2>
+
+        <p>Sätt spelarens namn</p>
+        <form action="api/player" method="POST">
+            <input type="text" id="name" name="name" required />
+            <button type="submit">POST /proj/api/player/:name</button>
+        </form> 
+        <p>..........................................................................</p>
+
+        <p>Hämta spelarens namn</p>
+        <form action="api/player" method="GET">
+            <button type="submit">GET /proj/api/player</button>
+        </form>
+        <p>..........................................................................</p>
+
+        <p>Lägg till ett plagg i spelarens tvättkorg</p>
+        <form action="api/basket/add" method="POST">
+            <button type="submit">POST /proj/api/basket/add</button>
+        </form> 
+        <p>..........................................................................</p>
+
+        <p>Hämta spelarens tvättkorg</p>
+        <form action="api/basket" method="GET">
+            <button type="submit">GET /proj/api/basket</button>
+        </form>
+        <p>..........................................................................</p>
+
+        <p>Lägg till en nyckel i spelarens ficka</p>
+        <form action="api/pocket/add" method="POST">
+            <button type="submit">POST /proj/api/pocket/add</button>
+        </form> 
+        <p>..........................................................................</p>
+
+        <p>Hämta spelarens ficka</p>
+        <form action="api/pocket" method="GET">
+            <button type="submit">GET /proj/api/pocket</button>
+        </form>
+        <p>..........................................................................</p>
+
+         <p>Hämta information om aktuellt rum</p>
+        <form action="api/room" method="GET">
+            <button type="submit">GET /proj/api/room</button>
+        </form>
+        <p>..........................................................................</p>
+
+
+
+    </section>
+    
+
+{% endblock %}

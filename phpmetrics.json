@@ -1,0 +1,23 @@
+{
+  "includes": [
+    "src/Adventure",
+    "src/Controller/AdventureControllerJson.php",
+    "src/Controller/AdventureDatabaseController.php",
+    "src/Controller/AdventureGameController.php",
+    "src/Entity/PlayerEntity.php",
+    "src/Entity/Highscore.php",
+    "src/Repository/PlayerRepository.php",
+    "src/Repository/HighscoreRepository.php"
+  ],
+  "report": {
+    "html": "docs/metrics"
+  },
+    "plugins": {
+        "git": {
+            "binary": "git"
+        },
+        "junit": {
+            "file": "docs/junit.xml"
+        }
+    }
+}

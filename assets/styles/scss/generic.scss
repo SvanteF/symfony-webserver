@@ -1,0 +1,26 @@
+body { 
+    min-height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    background-color: #fafafa; 
+    font-family: 'Kanit', sans-serif; 
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Babas Neue', sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+.no-bullets {
+    list-style-type: none;
+}

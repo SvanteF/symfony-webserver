@@ -1,0 +1,30 @@
+{% extends 'adventure/generic.html.twig' %}
+
+{% block title %}Laundry Master{% endblock %}
+
+{% block body %}
+  
+{% include 'adventure/navbar.html.twig' %}
+
+<h3>
+    Highscores
+</h3>
+
+<table class="highscore-table">
+    <tr>
+        <th>Placering</th>
+        <th>Spelare</th>
+        <th>Tid (sekunder)</th>
+        <th>Datum</th>
+    </tr>
+    {% for highscore in highscores %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ highscore.player.name }}</td>
+            <td>{{ highscore.score }}</td>
+            <td>{{ highscore.created|date('Y-m-d') }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+.two-columns-report {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 20px;
+    margin-bottom: 20px;
+
+
+    font-size: 1.2em;
+
+    .left, .right {
+        border: 2px solid black;
+        border-radius: 5px;
+        padding: 2px;
+    }
+
+    .right p{
+        text-align: left;
+    }
+    
+
+    .right .reply {
+        font-weight: bold;
+    }
+
+    .right .ul-left{
+        text-align: left;
+    }
+}

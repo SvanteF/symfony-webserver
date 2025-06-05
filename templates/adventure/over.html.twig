@@ -1,0 +1,15 @@
+{% extends 'adventure/generic.html.twig' %}
+
+{% block title %}Laundry Master{% endblock %}
+
+{% block body %}
+  
+{% include 'adventure/navbar.html.twig' %}
+
+<p>
+    Äntligen går tvättmaskinen, det tog dig {{ game_duration }} sekunder. Ta och njut av något kallt nu vettja!
+</p>
+<img src="{{ asset('img/laundry.gif') }}" alt="Washing machine">
+
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block title %}21{% endblock %}
+
+{% block body %}
+<h1>21</h1>
+
+<h3>Välkommen!</h3>
+
+<p>Bankens saldo: {{ bankFunds }}</p>
+<p>Spelarens saldo: {{ playerFunds }}</p>
+
+<form action="{{ path('game_21_2_get') }}" method="get">
+    <input type="radio" name="gameMode" value="dumb" checked> Dum bank
+    <input type="radio" name="gameMode" value="smart"> Smart bank
+    <br>
+    <button type="submit">Dra ditt första kort</button>
+</form>
+
+{% endblock %}

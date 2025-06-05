@@ -1,0 +1,111 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Documentation{% endblock %}
+
+{% block body %}
+    <h1>21</h1>
+
+    <section class="two-columns-report">
+        <aside class="left">
+            <h2>Dokumention</h2>
+            <p>
+                <a href="#flowchart">Flödesschema</a>
+            </p>
+            <p>
+                <a href="#pseudokod">Pseudokod</a>
+            </p>
+            <p>
+                <a href="#klasser">Klasser</a>
+            </p>
+            <p>
+                <a href="#uml">UML klassdiagram</a>
+            </p>
+            <p>
+                <a href="#smart">Smart spel</a>
+            </p>
+        </aside>
+        <article class="right">
+            <h2 id="flowchart">Flödesschema</h2>
+            <img src="{{ asset('img/flowchart_21.png') }}" alt="">
+            <h2 id="pseudokod">Pseudokod</h2>
+            <div class="code">
+            <pre><code>
+                BEGIN
+                    SET bank's bet to 100
+
+                    OBTAIN first card for player
+                    READ player's bet
+                    OBTAIN second card for player
+
+                    IF sum_player = 21 THEN
+                        Player wins hand
+                        RETURN
+                    ENDIF
+
+                    IF sum_player > 21 THEN
+                        Player loses hand
+                        RETURN
+                    ENDIF
+
+                    WHILE player is not satisfied
+
+                        OBTAIN new card for player
+                        IF sum_player = 21 THEN
+                            Player wins hand
+                            RETURN
+                        ELSE IF sum_player > 21 THEN
+                            Player loses hand
+                            RETURN
+                        ENDIF
+                    ENDWHILE
+
+                    WHILE sum_bank < 17
+
+                        OBTAIN new card for bank
+
+                    ENDWHILE
+
+                    IF sum_bank > 21
+                        Player wins hand
+                        RETURN
+                    ELSE IF sum_bank >= sum_player (sum_bank is strictly not required since sum_player cannot be > 21)
+                        Player loses hand
+                        RETURN
+                    ELSE
+                        Player wins hand
+                        RETURN
+                    ENDIF
+                END
+            </code></pre>
+            </div>
+            <h2 id="klasser">Klasser</h2>
+            <p>De tre första klasserna Card, DeckOfCards och Player kan återanvändas från kmom02</p>
+            <p>Card: Har properties color och value för att representera kort. </p>
+            <p>DeckOfCards: En komposition som innehåller ett eller flera Card-objekt</p>
+            <p>Player: Har ett namn och en korthand</p>
+            <p>
+                Game21: En ny klass som tillhandahåller logiken för spelet för att hålla
+                implementationen av Controllern smal.
+            </p>
+            <p>
+                Betting: En ny klass som hanterar allt kring bettandet.
+            </p>
+
+            <h2 id="uml">UML klassdiagram</h2>
+            <img src="{{ asset('img/uml_21.png') }}" alt="">
+
+            <h2 id="smart">Smart spel</h2>
+            <p>Den smarta banken gör fundamentalt två saker annorlunda jämfört med den dumma banken. 
+                Viktigast är att den inte slutar dra kort vid 17 utan fortsätter dra tills den slagit
+                slagit spelaren eller blivit tjock. Dessutom har den tillgång till statistiken och jag 
+                har implementerat att om chansen att dra ett ok kort är mindre än 30% så slutar banken att
+                dra. Nu är jag inte en expert på spelet 21 men det senare verkar för mig vara mer en
+                akademisk uppgift då jag inte ser ett syfte för banken att sluta dra kort förrän den
+                har vunnit än blivit tjock. Intelligensen har den i varje fall fått implementerad. 
+            </p>
+
+        </article>
+    </section>
+    
+
+{% endblock %}

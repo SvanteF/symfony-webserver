@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Magic number{% endblock %}
+
+{% block body %} 
+    <script>
+        fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=sek')
+        .then(response => response.json())
+        .then(data => {
+            const pris = data.bitcoin.sek;
+            document.getElementById('btc').textContent = pris + ' kronor';
+        });
+    </script>
+
+    <section class="lucky">
+        <h3>Jaha, vad ligger priset på bitcoin på för tillfället?</h3>
+        <h2><span id="btc">Hämtar pris...</span></h2>
+
+        <img class="mvc" src="{{ asset('img/bitcoin.gif') }}" alt="">
+    </section>
+    
+
+{% endblock %}

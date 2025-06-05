@@ -1,0 +1,574 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Report{% endblock %}
+
+{% block body %}
+    <h1>MVC</h1>
+
+    <section class="two-columns-report">
+        <aside class="left">
+            <h2>Kursmoment</h2>
+            <p>
+                <a href="#kmom01">Kmom01</a>
+            </p>
+            <p>
+                <a href="#kmom02">Kmom02</a>
+            </p>
+            <p>
+                <a href="#kmom03">Kmom03</a>
+            </p>
+            <p>
+                <a href="#kmom04">Kmom04</a>
+            </p>
+            <p>
+                <a href="#kmom05">Kmom05</a>
+            </p>
+            <p>
+                <a href="#kmom06">Kmom06</a>
+            </p>
+            <p>
+                <a href="#kmom07/10">Kmom07/10</a>
+            </p>
+
+        </aside>
+        <article class="right">
+            <h2 id="kmom01">Kmom01</h2>
+            <p>
+                Berätta kort om dina förkunskaper och tidigare erfarenheter kring objektorientering.
+            </p>
+            <p class ="reply">
+                I ett tidigare liv (00-talet) utbildade jag mig till civilingenjör inom mekatronik.
+                Där lärde jag mig objektorienterad programmering med C++. Sedan dess har jag tyvärr inte
+                kommit i kontakt med det.
+            </p>
+            <p>
+                Berätta kort om PHPs modell för klasser och objekt. Vilka är de grunder man behöver
+                veta/förstå för att kunna komma igång och skapa sina första klasser?
+            </p>
+            <p class ="reply">
+                Man bör först förstå vad en klass är vilket kan beskrivas som en mall för objekt. 
+                En klass kan innehålla variabler (properties) och funktioner (i klasser kallat 
+                metoder). Metoder är det vi kan göra med klassen och properties är dess tillstånd. 
+                Properties och metoder kan antingen vara public, private eller protected.
+            </p>
+            <p class ="reply">
+                Ett objekt är en instans av en klass. En klass kan med andra ord ha flera objekt
+                som i sin tur kan ha olika värden på properties.
+            </p>
+            <p>
+                Reflektera kort över den kodbas, koden, strukturen som användes till uppgiften
+                me/report, hur uppfattar du den?
+            </p>
+            <p class ="reply">
+                Jag vet av erfarenhet från tidigare kurser inom dbwebb att det tar lite tid att 
+                bli bekväm med strukturen på kodbasen. Jag klonade inte övningen som jag tror vissa 
+                andra gjorde utan startade från scratch. Det tog lite tid men då fick jag bara med 
+                det jag ville ha med. Det är bra att testa olika metoder i övningen men blir lite 
+                rörigt när jag ska bestämma mig för vad jag skulle använda i uppgiften. Jag hoppas 
+                jag gjorde rätt, det fungerar i varje fall.
+            </p>
+            <p>
+                Med tanke på artikeln “PHP The Right Way”, vilka delar in den finner du extra 
+                intressanta och värdefulla? Är det några särskilda områden som du känner att du 
+                vill veta mer om? Lyft fram några delar av artikeln som du känner mer värdefulla.
+            </p>
+            <p class ="reply">
+                Min upplevelse är att “PHP The Right Way” gör det enklare att navigera PHP än att 
+                direkt använda <a href="https://www.php.net/" target="_blank">php.net</a>. Jag 
+                använde "date and time" för att lära mig om hur jag skulle utföra delar av uppgiften
+                exempelvis. Hittills har jag inte mer än övergripande läst delar av dokumentet och mest
+                haft det för att navigera. Exempelvis hitta information om klasser och objekt.
+            </p>
+            <p>
+                Vilken är din TIL för detta kmom?
+            </p>
+            <p class ="reply">
+                I detta kmom01 lärde jag mig om hur man kan använda Symfony som ramverk för PHP. Med detta även
+                grundprinciperna för MVC "Model-View-Controller". Även JSON API är nytt för mig.
+            </p>
+            <p class ="reply">
+                Kursmomentet erbjöd och mycket nyttig repetition av bland annat Sass, CSS, Git och 
+                Twig.
+            </p>
+
+            <h2 id="kmom02">Kmom02</h2>
+            <p class="reply">
+                Samtliga obligatoriska och optionella krav är implementerade.
+            </p>
+            <p>
+                Förklara kort de objektorienterade konstruktionerna arv, komposition,
+                interface och trait och hur de används i PHP.
+            </p>
+            <p class="reply">
+                Arv: En "är en" relation mellan klasser. En subklass ärver properties och metoder
+                från en föräldraklass vilket gör att det blir möjligt att skapa hierarki och 
+                återanvända kod.
+            </p>
+            <p class="reply">
+                Komposition: En "har en" relation mellan klasser. En klass kan innehålla en instans
+                av en annan klass vilket möjliggör återanvändning av kod. 
+            </p>
+            <p class="reply">
+                Interface: Ett kontrakt där en klass förbinder sig till att använda vissa
+                definierade metoder. En klass kan implementera ett interface. 
+            </p>
+            <p class="reply">
+                Trait: Består av properties och metoder som används för att utöka klassers
+                funktionalitet. Trait ersätter multipelt arv som används i andra 
+                programmeringsspråk och möjliggör återanvändning av kod. 
+            </p>
+            <p>
+                Berätta om din implementation från uppgiften. Hur löste du uppgiften,
+                är du nöjd/missnöjd, vilken förbättringspotential ser du i din koden 
+                och dina klasser?
+            </p>
+            <p class ="reply">
+                Jag använde samma tillvägagångssätt som i övningarna (MVC) och skapade Modeller, 
+                vyer och kontrollers. Först gick jag genom samtliga krav för att få en uppfattning
+                av komplexiteten på uppgiften. Sedan skapade jag en vy för en landningssida i taget,
+                utökade med routes i kontrollern och utbyggnad av klasserna. 
+            </p>
+            <p class="reply">
+                Jag använde 3 klasser för "basuppgifterna" (Card, DeckOfCards och DeckWithJokers)
+                och implementationen fungerar väl efter min förståelse av kraven. För extrauppgifterna 
+                införde jag även klassen Player.
+            </p>
+            <p class="reply">
+                Samtliga krav är uppfyllda så på så sätt är jag nöjd. Potentiell förbättring hade
+                kunna vara att använda trait och interface för ännu större återanvändning. 
+                Det insåg jag först när jag var klar. 
+            </p>
+            <p>
+                Vilka är dina reflektioner så här långt med att jobba i Symfony med
+                applikationskod enligt MVC?
+            </p>
+            <p class ="reply">
+                Som vanligt tar det lite tid att vänja sig vid en ny miljö men Symfony och
+                MVC växer på mig. Jag ser stor potential till att skapa smarta hierarkier och
+                återanvändning av kod. Däremot har inte installationerna av Symfony fungerat varken
+                vid kmom01 eller kmom02 och jag har lagt väldigt mycket tid på att försöka förstå
+                vad som är fel innan kursmomenten uppdaterats med rättade instruktioner. Det har varit
+                en tidskrävande och frustrerande start på denna kurs. Jag hoppas instruktionerna
+                fungerar i kommande kursmoment. Där fick jag med lite (förhoppningsvis) konstruktiv
+                kritik. 
+            </p>
+            <p>
+                Vilken är din TIL för detta kmom?
+            </p>
+            <p class ="reply">
+                Jag har börjat lära mig om objektorientering och aktivt arbetat med, framförallt,
+                arv och komposition. Även Interface och Trait är numera begrepp jag förstår.
+            </p>
+            <p class="reply">
+                Jag har lärt mig hur jag skapar klasser och instanser av dem. Jag har lärt mig om 
+                JSON API även om jag bara börjat skrapa på ytan där än.
+            </p>
+            <p class="reply">
+                Jag har fördjupat mina kunskaper i Symfony och dessutom har jag fått en bra 
+                repetition av Git och sessioner, det var välbehövligt.
+            </p>
+
+            <h2 id="kmom03">Kmom03</h2>
+            <p class="reply">
+                Samtliga obligatoriska- och valfria krav är implementerade.
+            </p>
+            <p>
+                Berätta hur det kändes att modellera ett kortspel med flödesdiagram och pseudokod. 
+                Var det något som du tror stödjer dig i din problemlösning och tankearbete för att 
+                strukturera koden kring en applikation?
+            </p>
+            <p class="reply">
+                Jag har tidigare använt flödesdiagram vid programmering och det är ett fantastiskt bra
+                sätt att skapa sig en fysisk och mental modell över vad ett program ska kunna utföra. Jag
+                använde flödesdiagrammet mycket i detta kursmoment för att få till rätt flöde och kunna 
+                gå tillbaka och validera min implementation. Jag hade också hjälp av flödesdiagrammet när jag 
+                skapade psuedokoden. Däremot använde jag inte psuedokoden efteråt. Kanske för att koden
+                är fördelad enligt MVC så var det lite svårare att få användning för den. Jag får grubbla 
+                vidare på det tror jag. 
+            </p>
+            <p>
+                Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du 
+                nöjd/missnöjd, vilken förbättringspotential ser du i din koden, dina klasser och 
+                applikationen som helhet?
+            </p>
+            <p class="reply">
+                Jag är mycket nöjd med att till slut lyckats implementera samtliga krav. Särskilt statistiken
+                tycker jag var knivig att få till men väldigt roligt när det fungerade. Jag har ansträngt mig
+                för att hålla Controllers smala även det troligtvis går att hitta fler förbättringar där. Desto 
+                mer funktionalitet har jag placerat i modellklasserna. Det är en stor förändringen mot hur jag
+                implementerade "Card"-spelet där jag la mer kod i Controllers. Hade jag haft massor av mer tid kunde jag funderat på att bryta
+                upp min stora Game21-klass i flera andra klasser. 
+            </p>
+            <p>
+                Vilken är din känsla för att koda i ett ramverk som Symfony, så här långt in i kursen?
+            </p>
+            <p class="reply">
+                Jag upplever att jag nu i kmom03 haft stora fördelar med Symfony och MVC. Däremot skapas det 
+                många filer som jag inte riktigt helt förstår hur de hänger ihop och vilket syfte de har. 
+                För min del gäller det nog generellt när vi arbetar med olika ramverk etc. Jag behöver tid
+                för att bli kompis med dem.
+            </p>
+            <p>
+                Vilken är din TIL för detta kmom?
+            </p>
+            <p class="reply">
+                Jag har fördjupat min förståelse för MVC och framförallt tränat på att arbeta med klasserna och 
+                controllers. Twig är något lättare som en relativt "dum" komponent.
+            </p>
+            <p class="reply">
+                Jag har bättre förståelse för användandet av lintar och hur jag kan förbättra min 
+                kodkvalitet.
+            </p>
+            <p class="reply">
+                Jag har lärt mig skriva psuedokod och haft stor nytta av flödesschema vid min implementation.
+            </p>
+            <h2 id="kmom04">Kmom04</h2>
+            <p class="reply">
+                Samtliga obligatoriska krav är implementerade och det valfria undersökt. Det senare är fullt möjligt
+                och kräver omfattande mockningar då exempelvis returer från twig inte är tillgängliga.
+            </p>
+            <p>
+                Berätta hur du upplevde att skriva kod som testar annan kod med PHPUnit och hur du 
+                upplever phpunit rent allmänt.
+            </p>
+            <p class="reply">
+                Att skriva enhetstester var förvånansvärt tillfredsställande. Dels gav det mig en möjlighet
+                att reflektera över min egen kod och jag hittade exempelvis kod som aldrig kördes och därmed
+                inte behövdes. Det grafiska gränssnittet i docs/coverage är helt lysande för att identifiera
+                kod som behöver testas och att "jobba sig mot 100%".
+            </p>
+
+            <p class="reply">
+               Det svåraste var att mocka där jag inte tyckte jag hade tillräckligt med kunskaper inledningsvis. 
+               Jag har letat mycket för att hitta hur jag ska utföra tester med mockningar.
+            </p>
+            <p>
+                Hur väl lyckades du med kodtäckningen av din kod, lyckades du nå mer än 90% kodtäckning?
+            </p>
+            <p class="reply">
+                Då jag inte skrivit koden med enhetstester i åtanke trodde jag inte det skulle vara möjligt men 
+                till slut nådde jag 100% kodtäckning. Vad som är mer intressant, insåg jag, är att det inte ger 
+                hela bilden av ens kodkvalitet då det räcker med en enkel assertion. Utmaningen var istället
+                att skriva rätt assertions. Det har jag försökt att göra.
+            </p>
+            <p>
+                Upplever du din egen kod som “testbar kod” eller finns det delar i koden som är mer eller 
+                mindre testbar och finns det saker som kan göras för att förbättra kodens testbarhet?
+            </p>
+            <p class="reply">
+                Detta är något jag klurat en hel del på under kursmomentet. Det första jag tänker är att jag ska 
+                skriva enhetstester löpande under utvecklingen istället för efteråt. Det var ett berg att klättra. 
+                På så sätt tror jag att jag betydligt tidigare reflekterar över kodens testbarhet. Konkret ska 
+                jag sträva mot mindre komplexa klasser, både till rader kod och antal if-satser exempelvis. 
+            </p>
+
+            <p class="reply">
+                Jag har behövt mocka ganska mycket och även om jag förstår att det är praxis tycker jag det är
+                lite otillfredsställande. Mer fristående metoder upplever jag är bättre.
+            </p>
+            <p>
+                Valde du att skriva om delar av din kod för att förbättra den eller göra den mer testbar, 
+                om så berätta lite hur du tänkte.
+            </p>
+            <p class="reply">
+                Det korta svaret är ja. Det något längre svaret är att min ambition
+                i ärlighetens namn var att inte skriva om särskilt mycket för att inte riskera förstöra 
+                kortspelet. Jag la en hel del tid på funktionstest i förra kursmomentet och det är tidskrävande 
+                att göra om det arbetet. Däremot blev jag ändå tvungen att göra vissa ändringar. Jag såg ingen annan 
+                utväg än att lägga till två hjälpmetoder (getDrawCards() och getBankCards()) för att kunna 
+                genomföra enhetstesterna. Det fick i sin tur lint att klaga på för stor komplexitet i klassen Game21
+                och jag blev tvungen att bryta ut viss funktionalitet till en ny klass Game21Win för att lösa 
+                det problemet. Som jag nämnt ovan ska jag för kommande projekt göra mina klasser långt mindre
+                komplexa från början. Åtminstone är det vad jag ska försöka göra genom att tänka på test från början.
+            </p>
+            <p>
+                Fundera över om du anser att testbar kod är något som kan identifiera “snygg och ren kod”.
+            </p>
+            <p class="reply">
+                Det tycker jag verkligen. Särskilt att en metod (eller klass för den delen) ska göra 1 sak. Det 
+                tar jag med mig framöver och det tror jag kommer göra koden betydligt lättare att testa. Dessutom, 
+                att göra koden lätt att testa gör att man kan optimera sin kod från början. Som jag nämnde ovan
+                hittade jag till och med en kodsnutt som aldrig kördes. Mitt spel fungerade ändå men död kod ska
+                vi inte ha.
+            </p>
+            <p>
+                Vilken är din TIL för detta kmom?
+            </p>
+            <p class="reply">
+                Jag har främst lärt mig om enhetstester och hur man kan arbeta med dem. Framöver, när det applicerbart,
+                ska jag skriva enhetstester i samband med övrig kod. På sikt vore det även lärorikt att lära sig mer
+                testdriven utveckling. 
+            </p>
+            <p class="reply">
+                Jag har blivit varm i kläderna med att frekvent pusha uppdateringar i git. Det har räddat mig vid ett 
+                par tillfällen. Även att arbeta med verktygen lint, csfix etc är något som jag kommit igång med väl.
+                Sist men inte minst har jag lärt mig arbeta med phpunit, ett verktyg som jag verkligen uppskattar.
+            </p>
+            <h2 id="kmom05">Kmom05</h2>
+            <p class="reply">
+                Samtliga obligatoriska- och optionella krav är implementerade. 
+            </p>
+            <p>
+                Gick det bra att jobba igenom övningen med Symfony och Doctrine. Något särskilt du tänkte/reagerade 
+                på under övningen?
+            </p>
+            <p class="reply">
+                Det gick smidigt och jag hade god hjälp av övningen i kmom05. Det jag reagerade på är att det är lite 
+                "magi" som Mikael uttryckte det i föreläsningen. Jag ser det som ett ytterligare sätt att arbeta
+                med databaser och självklart kan det vara till god hjälp att inte behöva sätta sig in i hur 
+                SQL fungerar på djupet. 
+            </p>
+            <p>
+                Berätta om din applikation och hur du tänkte när du byggde upp den. Tänkte du något speciellt 
+                på användargränssnittet?
+            </p>
+            <p class="reply">
+                Jag började med att använda SQLite och fick det att fungera både lokalt och på studentservern. Det som jag 
+                kanske lagt mest tid på i detta kursmoment var att sedan ändra till MariaDB. Det funkar fint lokalt men på servern 
+                fick jag det inte att fungera trots omfattande felsökning, först själv, och sedan tillsammans med Mikael. I 
+                dagsläget är det oklart om jag gör något fel eller om det är något i miljöerna som inte lirar. Jag kommer 
+                jobba vidare med detta utanför kursmomenten och implementera MariaDB så fort det är möjligt.
+
+            <p class="reply">
+                Gällande användargränssnittet jobbade jag med att få till ett naturligt flöde vilket jag tycker applikationen
+                nu har. Först byggde jag route för route med för att se att de fungerade som tänkt. Jag avslutade med ett 
+                användartest och justerade sådant som inte flöt optimalt. 
+            </p>
+            <p>
+                Gick det bra att jobba med ORM i CRUD eller vad anser du om det, jämför gärna med andra sätt att 
+                jobba med databaser?
+            </p>
+            <p class="reply">
+                Som jag nämnde innan är det lite som magi där jag bara har delvis koll på vad som händer under huven. 
+                På sätt är det mer tillfredsställande att arbeta med SQL. Samtidigt går det fort, betydligt fortare än
+                när jag tidigare arbetat med SQL och databaser.
+            </p>
+            <p>
+                Vad är din uppfattning om ORM så här långt och relatera gärna till andra sätt att jobba med 
+                applikationskod mot databaser?
+            </p>
+            <p class="reply">
+                Det är, som ett första intryck, klart enklare att arbeta med jämfört att arbeta med SQL. Däremot vet jag
+                inte riktigt hur det fungerar på samma sätt som jag lärt mig i SQL som är ett väldigt "direkt" språk. Oavsett
+                är det kraftfullt att kunna koppla ihop MVC med databasen på ett så smidigt sätt och jag gillar att prata
+                objektorienterat med databasen.
+            </p>
+            <p>
+                Vilken är din TIL för detta kmom?
+            </p>
+            <p class="reply">
+                Jag har lärt mig grunderna i Object Relational Mapping (ORM). 
+            </p>
+            <p class="reply">
+                Det var ett bra tillfälle att fräscha upp kunskaperna om framförallt SQLite som det var ett tag sen jag
+                arbetade med och självklart även MariaDB. Det var bra att även repetera CRUD.
+            </p>
+            <p class="reply">
+                Jag har fått större insikt i skillnaderna mellan SQLite och MariaDB samt hur de fungerar på en server.
+            </p>
+            <h2 id="kmom06">Kmom06</h2>
+            <p>
+                Hur uppfattade du verktyget phpmetrics och fann du några särskilda bitar mer värdefulla än andra? 
+                Var det några särskilda metrics eller bilder du uppskattade?
+            </p>
+            <p class="reply">
+                Vi gör en klassisk sandwich: Det var mycket enkelt att generera rapport och det ger snabb feedback vid ändringar. För 
+                någon som är ny i verktyget var det något svårnavigerat och korrelerade bara delvis med de 6 C som vi arbetade med. 
+                Däremot fanns det delar som jag uppskattade mycket. Den grafiska representationen av Maintainability framförallt. Den 
+                ger en bra överblick av var man kan börja leta för att förbättra kvaliteten på koden. Även Violations var bra
+                och ger användare möjlighet till fördjupad feedback på koden.
+            </p>
+            <p>
+                Berätta hur det gick att integrera med Scrutinizer och vilken är din första känsla av verktyget och dess badges? 
+                Vilken kodtäckning och kodkvalitet fick du efter första bygget?
+            </p>
+            <p class="reply">
+                Det var inledningsvis inte alls lika lätt att komma igång med Scrutinizer som med Phpmetrics. Jag behövde flera 
+                körningar och leta fel i kompatibilitet mellan min kod och Scrutinizer innan koden passerade. Även i vår discord-chat 
+                ser jag flera som har problem med att komma igång med verktyget. 
+            </p>
+            <p class="reply">
+                Väl igång anser jag att Scrutinizer var mycket lätt att arbeta med och hade en tydligare uppdelning än 
+                Phpmetrics. Under Code är det mycket tydligt vad som kan förbättras och både klasser och metoder kan expanderas
+                för ännu tydligare feedback. Hot spots ger användare en mycket bra början. Även Coverage är mycket tydlig. 
+                Issues hade jag inte så många men där listas problem på ett mycket tydligt sätt. Slutligen är badges ett mycket
+                bra/tydligt sätt att ge en high level feedback på kodkvaliteten.
+            </p>
+            <p>
+                Hur är din egen syn på kodkvalitet, berätta lite om den? 
+                Tror du man kan man påvisa kodkvalitet i någon viss mån med badges eller vad tror du?
+            </p>
+            <p class="reply">
+                Jag en hel del erfarenhet från ett större IT-bolag med att arbeta med dessa saker, dock i en annan roll än utvecklare.
+                Min syn är att det är helt nödvändigt att arbeta med kodkvalitet i större projekt. Detta för att säkerställa 
+                kontinuerlig leverans och göra koden enkel att underhålla. I ett team med, säg 40 utvecklare, börjar och slutar
+                medarbetare hela tiden. Koden måste kunna förstås och hanteras av många personer. Dessutom kommer ändringar i krav
+                titt som tätt och det måste teamet enkelt kunna hantera. Då vi även arbetade med säkerhetskritiska funktioner måste
+                buggfixar kunna skeppas på mycket kort tid. Då måste automatiserade tester vara standard.
+            </p>
+            <p class="reply">
+                Vad det gäller badges ger de mest en fingervisning anser jag. Min erfarenhet är att det är kraftfullt att 
+                displaya dem på monitorer, synligt för alla medarbetare och chefer och precis alla kikar på dem när 
+                man kommer in på morgonen för att få en uppfattning om dagen. Om något exempelvis gått sönder under 
+                nattliga körningar är det prio att hantera det direkt.
+            </p>
+            <p>
+                Vilken är din TIL för detta kmom?
+            </p>
+            <p class="reply">
+                Jag har lärt mig mycket om automatiserade tester, något jag bara kunde mycket ytligt innan. Att kombinera
+                enhetstester med automatik är mycket kraftfullt för kontinuerlig leverans.
+            </p>
+            <p class="reply">
+                Specifikt har jag lärt mig verktygen Phpmetrics och Scrutinizer.
+            </p>
+            <p class="reply">
+                Jag har för första gången använt dessa verktyg för att hitta svagheter i min kod och reparera dem. I 
+                ett kommande arbete är det otroligt viktigt att hitta fel innan kunden. Eller 
+                "successful validation by unhappy customers" som jag brukade säga på min tidigare arbetsplats...
+            </p>
+            <h2 id="kmom07/10">Kmom07/10</h2>
+            <p>
+                Samtliga obligatoriska och optionella krav är implementerade.
+            </p>
+            <h3>
+                Krav 1-3: Webbplats
+            </h3>
+            <p>
+                Landningssidan /proj syns i navbaren med namnet Adventure vilket är det fokus jag valt för
+                projektet. Jag har skapat spelet Laundry Master och stilen och utseendet för projektet skiljer sig 
+                markant från min report-sida och övriga sidor under kursen. En ny stylesheet är skapad där färger, 
+                typsnitt och layout är förändrade för hela /proj inklusive header och footer. Min ambition är att spelet ska 
+                kännas som ett retro-spel och jag har därför valt både typsnitt och färger med omsorg. 
+                Även bilderna är speciellt framtagna för spelet och visar korrekt antal objekt i rummen 
+                för att höja spelupplevelsen. Mer om det under krav 6.
+            </p>
+            <p>
+                Projektet har även en separat navbar som innehåller länkarna för projektet. Dessa
+                är <code>/proj</code> - "Starta ett nytt spel", <code>/proj/highscore</code> - Highscores,
+                <code>/proj/about</code> - Om, <code>/proj/quick</code> - "Snabblösning" till lärare 
+                samt <code>/proj/api</code> - API. Under <code>/proj/about</code> förklarar jag utförligt 
+                bakgrund och tanke med projektet.
+            </p>
+            <p>
+                Git repo har en <code>README.md</code> som uppfyller samtliga krav. Klickbara badges till
+                Scrutinizer finns. Innehållet i report beskrivs samt en instruktion för man kan klona och 
+                komma igång med webbplatsen.
+            </p>
+            <p>
+                Innehållet i <code>/docs</code> är uppdaterat. Jag har lagt stor kraft på kodtäckningen
+                vilken är 100% för de obligatoriska delarna och totalt 94% med tester för 
+                Controllers. Dokumentation och metrics finns naturligtvis.
+            </p>
+            <h3>
+                Krav 4: JSON API
+            </h3>
+            <p>
+                Jag har skapat JSON API till projektet på <code>proj/api</code>. Totalt är 7 API
+                implementerade varav 3 POST och 4 GET. Samtliga APIer har knappar som kan användas 
+                för att testa varje API. Samtliga fungerar väl och var givande att använda i 
+                utvecklingen av projektet.
+                <br>
+                <code>POST /proj/api/player/:name</code>
+                <br>
+                <code>GET /proj/api/player</code>
+                <br>
+                <code>POST /proj/api/basket/add</code>
+                <br>
+                <code>GET /proj/api/basket</code>
+                <br>
+                <code>POST /proj/api/pocket/add</code>
+                <br>
+                <code>GET /proj/api/pocket</code>
+                <br>
+                <code>GET /proj/api/room</code>
+                <br>
+            </p>
+            <h3>
+                Krav 5: ORM
+            </h3>
+            <p>
+                Jag har använt databasen SQLite via ORM. Databasen använder, för det här projektet, två relevanta 
+                tabeller, "player_entity" och "highscore". Dessa har en många-till-en relation mellan sig. Jag har 
+                skapat sidan <code>proj/about/database</code> - "Information om databasen" som jag länkat till 
+                från <code>proj/about</code>. Där har jag utförligt svarat på samtliga frågor i krav 5. 
+            </p>
+            <h3>
+                Krav 6: Avancerade features
+            </h3>
+            <p>
+                Jag har implementerat ett flertal features som varit extra svåra eller tagit lång tid att utföra. Samtliga
+                har jag gjort för att förbättra webbsidan och framförallt spelupplevelsen av Laundry Master.
+            </p>
+            <p>
+                Feature 1: Det första jag vill lyfta är att jag la en hel del energi på att designa spelet så det skulle bli roligt 
+                att spela och därför tyckte jag inte att de räckte med kraven att man skulle kunna ta saker och lägga i
+                ryggsäck och förflytta sig. Istället implementerade jag tvätt som man samlar i en korg, nyckel som man kan lägga
+                i en spelares ficka samt garderober som innehåller nycklar och tvätt. De garderoberna kan dessutom vara låsta. 
+                Konkret betydde det att jag implementerade en mer komplex värld med betydligt fler klasser än vad kraven krävde.
+            </p>
+            <p>
+                Feature 2: Jag blev inspirerad av Mikaels projektintroduktion till att implementera tester även för Controllers vilket
+                jag också gjorde. Detta var svårt då vi inte gått genom det i kursen och tog dessutom många timmar att genomföra. 
+                Min ambition var att behålla 100% coverage som jag hade från grundkraven men landade i varje fall på 94% till slut
+                när jag fick nöja mig pga tidsbrist.
+            </p>
+            <p>
+                Feature 3: Det är 2025 så därför måste ett spel måste kunna spelas på en telefon. Jag passade på att repetera
+                från designkursen och skapade därför mobilanpassning för alla projektsidor. Detta var tidskrävande 
+                och resultatet är ett spel som faktiskt fungerar helt ok på mobilen utan buggar.
+            </p>
+            <p>
+                Feature 4: Tillbaka till spelupplevelsen: För att spelet skulle vara roligt att spela la jag mycket energi på val
+                av färger och typsnitt. Det jag dock la mest tid på var att ta fram relevanta bilder för rummen. Jag testade med
+                flera olika vertyg innan jag med hjälp av AI-bildgenerering skapade bilder av rum som innehöll rätt antal dörrar,
+                garderober, nycklar och tvätt. Detta gav mig god repetition från designkursen gällande färger och typsnitt medan 
+                bilderna blev ett nötande av prompts. Det ingår inte i kursen men var lika lärorikt som frustrerande då det var svårt 
+                att få rätt. Till slut ritade jag rummet på papper, fotade och från det skapade bilder utifrån materialet 
+                i retrostil.
+            </p>
+            <p>
+                Feature 5: Slutligen vill jag nämna att det var viktigt för mig att databasen tillförde något relevant till spelet och
+                något jag verkligen saknade från grundkraven var highscore för spelet. Det är något jag velat göra i många år för egna 
+                projekt men inte haft kunskap i hur så det passade helt perfekt att göra det. Resultatet är att databasen hanterar 
+                highscore (en topplista alltså) och visar de 10 bästa resultaten på en egen sida <code>/proj/highscore</code>.
+            </p>
+            <h3>
+                Genomförande av projekt
+            </h3>
+            <p>
+                Den roligaste delen av projektet var att designa spelet och skapa de klasser som behövdes för att realisera det.
+                Jag började tidigt att göra enhetstester för den kod jag skapade för att dra nytta av testerna under utvecklingen. 
+                Det svåraste i projektet var trots det att göra tester, precis som jag upplevt under tidigare kursmoment. Särskilt 
+                för controllers även om det var lärorikt.
+            </p>
+            <p>
+                Jag hade gärna arbetat än mer med ORM och kopplingen mellan databas och objektorienterad utveckling. Totalt har jag i 
+                vanlig ordning lagt ganska mycket tid men jag har haft möjlighet till det och tycker det är roligt.
+            </p>
+            <h3>
+                Återkoppling kring kursen
+            </h3>
+            <p>
+                Jag tycker de förinspelade föreläsningarna är utmärkta och passar mitt vardagspussel. 
+                De är informativa och ger en bra grund att stå på inför kursmomenten.
+                Gällande handledning har jag fått god och snabb hjälp, främst från Mikael, på mina många frågor under kursen.
+                Även andra studenter svarar snabbt i discord-chatten om man har funderingar. 
+            </p>
+            <p>
+                I kategorin konstruktiv feedback skulle jag vilja lyfta att det kan vara en idé att lärarteamet testar genom
+                kursmaterialet innan kursen drar igång för att se om de miljöer som ska användas fungerar. I mitt specifika fall är jag
+                en person som ofta ligger före de flesta andra i kursen samtidigt som jag inte är en lika erfaren utvecklare som 
+                andra som ligger långt fram. Därför kan jag ibland bränna mycket tid på att försöka lösa problem med exempelvis
+                labbmiljön som vore bra om det redan fungerade.
+            </p>
+            <p>
+                Jag är överlag mycket nöjd med samtliga kurser jag gått i detta kurspaket men kanske varit överdrivet snål
+                i mitt betyg. Jag drar därför till med 10 av 10 för MVC. Det var ett utmärkt sätt att avsluta kurspaketet och 
+                behandlade många andra delar av de andra kurserna. Tack!
+            </p>
+        </article>
+    </section>
+    
+
+{% endblock %}

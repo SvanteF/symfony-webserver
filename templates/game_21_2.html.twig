@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+{% block title %}21{% endblock %}
+
+{% block body %}
+<h1>21</h1>
+
+<p>Bankens saldo: {{ bankFunds }}</p>
+<p>Ditt saldo: {{ playerFunds }}</p>
+<p>
+    {% if bet > 0 %}
+        Du har bettat {{bet}}
+    {% endif %}
+    {% if bet == 0 %}
+    {{betText}}
+    {% endif %}
+</p>
+
+<h2>
+    {% for card in playersCards %}
+        {{ card }}
+    {% endfor %}
+</h2>
+
+<h2>
+    Dina poäng är: {{ playerPoints }}
+</h2>
+
+<form action="{{ path('game_21_3_post') }}" method="post">
+    <label for="num">Vill du stanna?:</label>
+    <button type="submit">Stanna</button>
+</form>
+
+<form action="{{ path('game_21_2_post') }}" method="post">
+    {% if bet == 0 %}
+    <label for="num">Hur mycket vill du satsa?:</label>
+    <input type="number" id="playersBet" name="playersBet" value="1" min="1" max="100" />
+    {% endif %}
+    <br>
+    <button type="submit">Dra nästa kort</button>
+</form>
+
+<p>
+    Sannolikheten för att inte bli tjock på nästa kort är {{ probability }} %
+</p>
+
+{% endblock %}

@@ -1,0 +1,265 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Metrics{% endblock %}
+
+{% block body %}
+    <h1>Metrics</h1>
+
+    <section class="two-columns-report">
+        <aside class="left">
+            <h2>Rubriker</h2>
+            <p>
+                <a href="#Introduktion">Introduktion</a>
+            </p>
+            <p>
+                <a href="#Phpmetrics">Phpmetrics</a>
+            </p>
+            <p>
+                <a href="#Scrutinizer">Scrutinizer</a>
+            </p>
+            <p>
+                <a href="#Förbättringar">Förbättringar</a>
+            </p>
+            <p>
+                <a href="#Diskussion">Diskussion</a>
+            </p>
+        </aside>
+        <article class="right">
+            <h2 id="Introduktion">Introduktion</h2>
+            <p>
+                Vi börjar med att förklara de 6 C:na:
+            </p>
+
+            <ul class="ul-left">
+                <li>
+                    Codestyle
+                    <ul>
+                        <li>
+                            Kodstil är en förutsättning för god kodkvalitet och ska följa de standarder som 
+                            finns inom ett språk eller exempelvis ett projekt. Detta för att koden ska kunna 
+                            läsas och förstås av andra och även en själv när man underhåller den. 
+                            Kodstil inkluderar namnkonventioner, mått på indrag och hur kommentarer ska
+                            skrivas.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Coverage
+                    <ul>
+                        <li>
+                            Kodtäckning är ett mått på hur stor del av koden som testas av automatiska 
+                            tester. Genom att ha hög kodtäckning finns det goda förutsättningar för att 
+                            upptäcka fel men måttet i sig säger inget om kvaliteten på dessa tester. För min 
+                            egen har jag uppnått 100% coverage för de modellklasser som tillhör Card vilket 
+                            är den del vi har fokuserat att skriva enhetstester till. Totalt för 
+                            /src är coverage 24% och inkluderar övningar och uppgifter från flera kursmoment. 
+                        </li>
+                    </ul>
+                    
+                </li>
+                <li>
+                    Complexity
+                    <ul>
+                        <li>
+                            Kodkomplexitet, eller cyklomatisk komplexitet som vi pratat om i kursen, är ett 
+                            mått på hur många oberoende vägar som kan exekveras i en klass eller metod. Ju fler val som
+                            finns i koden, exempelvis if, else, while osv. desto högre komplexitet. Ett högt komplexitetsmått 
+                            kan betyda att koden är mer svårtläst och svårare att underhålla. Det är också svårt att ändra
+                            något i koden utan att riskera att något annat går sönder. En lösning för att få ner komplexiteten
+                            är att dela upp klassen eller metoden i mindre delar. I kursmoment 4, när vi arbetade med
+                            enhetstester, var detta en stor utmaning för mig då jag tidigare skrivit koden helt utan detta i åtanke.
+                            Min förhoppning är att det arbete jag gjorde då för att förenkla koden betalar tillbaka sig i 
+                            detta kursmoment. Det blir spännande att se.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Cohesion
+                    <ul>
+                        <li>
+                            Cohesion är ett mått på hur fokuserad en klass eller modul är på att göra 1 sak. Ju högre cohesion
+                            de har, desto lättare är det att förstå och underhålla koden. Det ger också en högre modularitet då
+                            varje metod kan återanvändas till andra applikationer. Motsatsen, att ha låg cohesion, gör att
+                            underhåll blir svårt då varje ändring påverkar kod som egentligen inte har med uppgiften att göra.  
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Coupling
+                    <ul>
+                        <li>
+                            Coupling anger hur oberoende en klass eller modul är av andra klasser och moduler. Likt
+                            cohesion är det bra att ha så få beroenden som möjligt för att göra koden enkel att testa och
+                            underhålla. Även detta var en nyttig läxa för mig i kursmoment 4 då jag inte haft det i åtanke när
+                            jag skrev koden. Framgent kommer jag tänka på dessa C:n redan från början.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    CRAP
+                    <ul>
+                        <li>
+                            CRAP är en förkortning av "Change Risk Anti-Patterns" och anger hur vältestad kod är 
+                            (uttryckt i kodtäckning) jämfört med dess komplexitet. Det är alltså en kombination av
+                            två av de mått som förklarats ovan. En klass eller metod som har låg komplexitet och har hög
+                            kodtäckning har ett lågt CRAP-mått. Det motsatta gäller också förstås och ger ett högt mått. Som 
+                            namnet antyder betyder ett högt värde att det finns en stor risk i att ändra i koden, dvs.
+                            underhålla den. För att förbättra, dvs. minska CRAP-måttet, kan man öka kodtäckningen eller
+                            minska komplexitet som behandlats ovan.
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h2 id="Phpmetrics">Phpmetrics</h2>
+            <p>
+                Jag har genomfört en analys baserat på resultaten i Phpmetrics. Följande svaga punkter i min kod
+                är identifierade och som jag bedömer är mest relevanta att undersöka:
+            </p>
+            <p>
+                Phpmetrics rapport visar jag har 11 violations varav 2 är errors. I båda fallen rör det sig om klasser som
+                inte följer "single responsibility"-principen och berör därmed <strong>cohesion</strong>. Den ena klassen är kod från en övning som jag inte skapat
+                själv och det andra fallet "ControllerJson" har naturligt många metoder. Detta blir nog därför inte 
+                högsta prio.
+            </p>
+            <p>
+                <strong>Cyklomatisk komplexitet</strong>: Phpmetrics pekar ut klassen Game21 till att ha ett 
+                komplexitetsmått på 24. 
+            </p>
+            <p>
+                <strong>Cyklomatisk komplexitet</strong>: Även klassen CardGameController bedöms ha ett högt komplexitetsmått på 20. 
+            </p>
+            <img class="mvc" src="{{ asset('img/phpmetrics1.png') }}" alt="">
+            <p>
+                Under "Size &amp volume" är klass Game21 störst med 160 rader vilket ändå är lägre än Phpmetrics
+                rekommenderade gränsvärde på 200.
+            </p>
+            <p>
+                Under "object oriented metrics" listas LCOM (Lack of <strong>Cohesion</strong> of Methods). Föga förvånande hittar vi 
+                klassen ControllerJson och ProductController i topp (se ovan). Mer intressant är plats tre på listan,
+                Game21Win. 
+            </p>
+            <p>
+                Under <strong>Coupling</strong> listas klasser som påverkar eller påverkas av andra klasser. Under påverkas
+                av finns i topp alla controllers och det kanske är naturligt. Undantaget är Game21 som är en stor metodklass 
+                (totalt 7 kopplingar).
+                Av de som påverkar andra mest är DeckOfCards och Card i topp vilket inte överraskar då de injectas in i 
+                andra metodklasser.
+            </p>
+
+            </ul>
+            <h2 id="Scrutinizer">Scrutinizer</h2>
+           
+            <a href="https://scrutinizer-ci.com/g/SvanteF/mvc-report/?branch=main">
+                <img src="https://scrutinizer-ci.com/g/SvanteF/mvc-report/badges/quality-score.png?b=main" alt="Scrutinizer Code Quality">
+            </a>
+            <a href="https://scrutinizer-ci.com/g/SvanteF/mvc-report/?branch=main">
+                <img src="https://scrutinizer-ci.com/g/SvanteF/mvc-report/badges/coverage.png?b=main" alt="Code Coverage">
+            </a>
+            <a href="https://scrutinizer-ci.com/g/SvanteF/mvc-report/build-status/main">
+                <img src="https://scrutinizer-ci.com/g/SvanteF/mvc-report/badges/build.png?b=main" alt="Build Status">
+            </a>
+            <p>
+                Som synes ger Scrutinizer det sammanlagda betyget 9.87 på kodvaliteten. Det är en väldigt god utgångspunkt 
+                tänker jag. Build passerar och <strong>coverage</strong> är som nämnts ovan på 24% men mer relevant är att 
+                jag har 100% coverage på Card-klassen där jag faktiskt har arbetat med enhetstester. Eventuellt kan man 
+                skriva nya enhetstester för andra klasser än de jag tidigare arbetat med. 
+            </p>
+            <p>
+                Under Code->Hot spots kan man se att samtliga klasser är ratade "A". Gällande metoder är samtliga ratade "A"
+                förutom 5 stycken som är ratade "B". Den som är listad som sämst är metoden getFatProbability() som
+                flaggas som något högre i <strong>komplexitet</strong>, med 8 beslutspunkter. Näst på listan är game212Post() 
+                och getPoints() som eventuellt kan ses över gällande antal beslutspunkter för att ytterligare minska 
+                komplexiteten. Det är dock redan relativt låga nivåer.
+            </p>
+            <p>
+                Under "Issues" finns två filer listade. Den ena, Kernel.php är inte skriven av mig men däremot är 
+                LibraryController.php det och Scrutinizer lyfter att där finns en bug, dock som en minor. Det verkar röra 
+                sig om type check och borde därför tillhöra <strong>kodstil</strong> inom 6 C.
+            </p>
+            <p>
+                Under Code->Operations: Gällande cohesion och coupling så dyker de metrics inte upp i Scrutinizer 
+                (likt Mkaels Database-exempel), oklart varför. Däremot komplexitet finns där och bekräftar bilden ovan 
+                under hot spots. Tittar man på <strong>CRAP</strong>-mått är game212Post() högst, följt av dealGet() 
+                och dealPost().
+            </p>
+            <img class="mvc" src="{{ asset('img/scrutinizer1.png') }}" alt="">
+
+            <h2 id="Förbättringar">Förbättringar</h2>
+            <p>
+                Baserat på feedback från Phpmetrics och Scrutinizer har jag valt ut förbättringar enligt nedan. Värt att
+                notera att är att jag väljer att fokusera på kod som jag själv har skrivit, alltså inte färdig kod och sådan
+                given till oss studenter i övningar. Jag har också lagt mycket tid i kursmoment 4 på att förbättra koden i 
+                klassen Card med hjälp av lint och enhetstester. Därför vill jag lägga min fokus där då det är den del 
+                där jag aktivt arbetat med att förbättra min kodkvalitet. 
+            </p>
+            <ul class="ul-left">
+                <li>
+                    Klassen <strong>Game21</strong> har ett relativt hög <strong>komplexitet</strong> och 
+                    <strong>coupling</strong>. Då klassen innehåller metoderna <strong>getFatProbability()</strong> och
+                    <strong>getPoints()</strong> som också pekats ut ovan blir dessa två metoder de första som ska 
+                    förbättras. Konkret behöver dessa metoder brytas upp till fler, isolerade metoder. Min utmaning är att
+                    jag då är ganska säker på att lint kommer klaga på för hög klasskomplexitet. Därför måste troligtvis
+                    även klassen Game21 brytas upp, troligtvis till någon "hjälpklass". Enhetstester kommer behöva skrivas
+                    om för att behålla 100% täckning på Card.
+                    Jag räknar med att dessa metoder slutligen kommer bli klassade som "A" i Phpmetrics efteråt (istället för "B") 
+                    med lägre <strong>komplexitet</strong>. Även klassen Game21 kommer ha lägre <strong>komplexitet</strong>.
+                </li>
+                <li>
+                    Den enda bug som flaggats för i Phpmetrics berör LibraryController från kurmoment 5. Den bör 
+                    hanteras för att förbättra <strong>codestyle</strong> och att inga buggar i min kod ska 
+                    rapporteras av Phpmetrics. 
+                </li>
+                <h3>
+                    Implementation:
+                </h3>
+                <li>
+                    Först skapade jag hjälpklassen Probability för att kunna lyfta ut metoden getFatProbability()
+                    dit. Enligt Phpmetrics minskade komplexiteten i klassen Game21 från <strong>24 till 17, bra!</strong>. Därefter
+                    uppdaterade jag enhetstester som gått sönder och rättade buggar i lint. Coverage är tillbaka på 100%.
+                </li>
+                <li>
+                    Nästa svaghet var komplexiteten i getFatProbability(). Genom att ta med aktuell korthand som parameter kunde
+                    jag ta bort flera beslutspunkter som avgjorde om korten var spelarens eller bankens. Enligt Scrutinizer minskade komplexiteten
+                    från 8 beslutspunkter till 5. <strong>getFatProbability() har nu "A" istället för "B" i Scrutinizer, bra!</strong>
+                </li>
+                <li>
+                    Näst på tur är att minska komplexiteten i getPoints(). Vid närmare genomgång såg jag att en del är duplicerad och bör 
+                    kunna förenklas. En insikt var att om man kan ha en variabel för bankens respektive spelarens poäng kan koden och dess 
+                    komplexitet minskas betydligt. Enligt Phpmetrics minskade komplexiteten i klassen Game21 från 
+                    <strong>17 till 13, bra!</strong> (Utgångläget var till och med <strong>24</strong>, se ovan). För getPoints() specifikt,
+                    så <strong>minskade antalet beslutspunkter från 7 till 3 enligt Scrutinizer och har nu även den "A".</strong>
+                </li>
+                <li>
+                    Vidare vill jag lösa den enda bug som Scrutinizer hittat i min kod, det är brist på en null check 
+                    i klassen LibraryController. Vid närmare inspection har jag denna check på ett korrekt ställe men 
+                    saknade det på fyra andra ställen i koden. Efter detta åtgärdast rapporterar nu Scrutinizer att 
+                    <strong>buggen är borta</strong>.
+                </li>
+            </ul>
+            <h2 id="Diskussion">Diskussion</h2>
+            <p>
+                Min uppfattning är att detta är ett mycket effektivt sätt att arbeta på för att säkerställa kod 
+                med god kodkvalitet. Det är något tungt att göra det i efterhand på sin kod och det ska bli spännande i kommande
+                projekt/uppgifter att integrera det direkt i utvecklingsprocessen. Jag har i ett tidigare liv arbetat
+                med mycket mogna mjukvaruteam (dock ej som utvecklare utan i ledande roll) och sett flera av dessa metoder 
+                och liknande verktyg användas professionellt. Det är riktigt roligt att själv lära sig detta nu!
+            </p>
+            <p>
+                De, för mig, mest uppenbara fördelarna är att koden blir lättare att förstå både för en själv och 
+                andra. Det i sin tur gör att koden kan underhållas och vidareutvecklas lättare. Detta är enligt min
+                uppfattning så man arbetar inom större mjukvaruprojekt. En eventuell nackdel är den stora kostnaden
+                det innebär att skriva tester och underhålla dem respektive koden. Som utvecklare bör man vara selektiv
+                och på sikt lära sig vad som är viktigt att göra och vad som är mindre viktigt. Är exempelvis 100% 
+                coverage alltid viktigt? Troligtvis inte. I varje fall inte för mindre projekt.
+            </p>
+            <p>
+                Vad det gäller andra möjligheter till att arbeta med clean code får jag spekulera lite. Kanske att arbeta 
+                tillsammans i parprogrammering vilket jag har sett exempel på i arbetslivet kan vara ett lämpligt sätt?
+                Då får man väldigt direkt feedback och utbyte av erfarenhet i realtid. 
+            </p>
+        </article>
+    </section>
+    
+
+{% endblock %}
