@@ -1,54 +1,44 @@
-# 1. Basbild: PHP 8.2 med Apache
+# 1. Använd officiell PHP 8.2 med Apache
 FROM php:8.2-apache
 
-# 2. Installera systempaket och PHP-tillägg som behövs
+# 2. Installera systemberoenden och PHP extensions
 RUN apt-get update && apt-get install -y \
-    unzip \
-    git \
-    libicu-dev \
-    libonig-dev \
-    libxml2-dev \
-    zip \
-    sqlite3 \
-    libsqlite3-dev \
+    unzip git libicu-dev libonig-dev libxml2-dev zip sqlite3 libsqlite3-dev \
     && docker-php-ext-install intl pdo pdo_sqlite xml opcache \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# 3. Aktivera Apache mod_rewrite för Symfony-routes
+# 3. Aktivera mod_rewrite för Symfony routing
 RUN a2enmod rewrite
 
-# 4. Kopiera composer från officiell composer image
+# 4. Kopiera Composer från officiell Composer-bild
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# 5. Ange arbetskatalog
+# 5. Sätt arbetskatalog i containern
 WORKDIR /var/www/html
 
-# 6. Kopiera först bara composer.json och composer.lock för caching
+# 6. Kopiera bara composer-filer först för att cachea dependencies
 COPY composer.json composer.lock ./
 
-# 7. Kör composer install för att hämta dependencies tidigt (för caching)
-RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
+# 7. Installera PHP-dependencies med Composer, tillåt plugins även som root
+RUN COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader --no-interaction
 
-# 8. Kopiera resten av koden
+# 8. Kopiera resten av projektfilerna
 COPY . .
 
-# 9. Kör scripts (om du vill, annars kan du ta bort detta)
-RUN composer run-script post-install-cmd
-
-# 10. Ge rättigheter till var/ om den finns
+# 9. Ändra ägarskap på var/ om katalogen finns (cache, logs etc)
 RUN if [ -d var ]; then chown -R www-data:www-data var; else echo "var directory not found, skipping chown"; fi
 
-# 11. Sätt Apache DocumentRoot till public/
+# 10. Sätt Apache DocumentRoot till Symfony public/
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 
-# 12. Ändra Apache-konfig så att DocumentRoot pekar på public/
+# 11. Ändra Apache-konfiguration för att använda ny DocumentRoot
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
     /etc/apache2/sites-available/000-default.conf \
     /etc/apache2/apache2.conf \
     /etc/apache2/conf-available/*.conf
 
-# 13. Exponera port 80
+# 12. Exponera port 80
 EXPOSE 80
 
-# 14. Starta apache i förgrunden
+# 13. Starta Apache i förgrunden
 CMD ["apache2-foreground"]
