@@ -1,7 +1,7 @@
-# 1. Använd officiell PHP-bild med Apache
+# 1. Använd officiell PHP 8.2-bild med Apache
 FROM php:8.2-apache
 
-# 2. Installera systemberoenden och PHP-tillägg
+# 2. Installera systemberoenden och PHP extensions
 RUN apt-get update && apt-get install -y \
     unzip \
     git \
@@ -9,28 +9,36 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     zip \
-    && docker-php-ext-install intl pdo pdo_mysql pdo_sqlite xml opcache
+    sqlite3 \
+    libsqlite3-dev \
+    && docker-php-ext-install intl pdo pdo_sqlite xml opcache
 
-# 3. Aktivera Apache mod_rewrite
+# 3. Aktivera mod_rewrite för Symfony routing
 RUN a2enmod rewrite
 
-# 4. Installera Composer globalt
+# 4. Kopiera Composer från Composer-bilden
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # 5. Ange arbetskatalog
 WORKDIR /var/www/html
 
-# 6. Kopiera projektet till containern
+# 6. Kopiera alla filer in i containern
 COPY . .
 
-# 7. Installera PHP-bibliotek utan dev och utan auto-scripts
-RUN composer install --no-dev --optimize-autoloader --no-scripts
+# 7. Installera PHP-dependencies, hoppa över dev-paket
+RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
 
-# 8. Ange public/ som DocumentRoot i Apache
-RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf
+# 8. (Valfritt men rekommenderat) Skapa rättigheter till var/cache/logs
+RUN chown -R www-data:www-data var
 
-# 9. Öppna port 80
+# 9. Ställ in Apache DocumentRoot till Symfony public/
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public
+
+# 10. Justera Apache-konfig för ny DocumentRoot
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/000-default.conf /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
+# 11. Exponera porten
 EXPOSE 80
 
-# 10. Starta Apache i förgrunden
+# 12. Kör Apache i förgrunden
 CMD ["apache2-foreground"]
