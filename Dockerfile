@@ -29,7 +29,7 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
 
 # 8. (Valfritt men rekommenderat) Skapa rättigheter till var/cache/logs
-RUN chown -R www-data:www-data var
+RUN if [ -d var ]; then chown -R www-data:www-data var; else echo "var directory not found, skipping chown"; fi
 
 # 9. Ställ in Apache DocumentRoot till Symfony public/
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
