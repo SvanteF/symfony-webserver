@@ -1,4 +1,4 @@
-# 1. Basbild med PHP 8.2 + Apache
+# 1. Basbild med PHP 8.2 och Apache
 FROM php:8.2-apache
 
 # 2. Installera systempaket och PHP-tillägg
@@ -10,34 +10,32 @@ RUN apt-get update && apt-get install -y \
 # 3. Aktivera Apache mod_rewrite
 RUN a2enmod rewrite
 
-# 4. Kopiera Composer från officiell Composer image
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# 4. Installera Composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # 5. Ange arbetskatalog
 WORKDIR /var/www/html
 
-# 6. Kopiera hela projektet (exkludera enligt .dockerignore)
+# 6. Kopiera projektet (exkludera enligt .dockerignore)
 COPY . .
 
-# 7. Installera Composer dependencies utan scripts (för att undvika .env problem under build)
-RUN COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
+# 7. Skapa och sätt rättigheter på var/-katalogen
+RUN mkdir -p var && chown -R www-data:www-data var
 
-# 8. Dump environment för produktionsmiljö (valfritt, kan kommenteras under dev)
-# RUN php bin/console --env=prod cache:clear
-# RUN composer dump-env prod
+# 8. Installera Composer-dependencies
+RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# 9. Ändra ägare på var/ (cache, loggar)
-RUN if [ -d var ]; then chown -R www-data:www-data var; else echo "var directory not found, skipping chown"; fi
-
-# 10. Sätt Apache DocumentRoot till Symfony public/
+# 9. Sätt Apache DocumentRoot till Symfony public/
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
     /etc/apache2/sites-available/000-default.conf \
     /etc/apache2/apache2.conf \
     /etc/apache2/conf-available/*.conf
 
-# 11. Exponera port 80
+# 10. Exponera port 80
 EXPOSE 80
 
-# 12. Startkommando: Rensa cache, ägarskap, starta Apache
-CMD ["bash", "-c", "php bin/console cache:clear && chown -R www-data:www-data var && apache2-foreground"]
+# 11. Startkommando: Skapa/migrera databas och starta Apache
+CMD php bin/console doctrine:database:create --if-not-exists && \
+    php bin/console doctrine:migrations:migrate --no-interaction && \
+    apache2-foreground
